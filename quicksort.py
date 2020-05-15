@@ -1,20 +1,21 @@
 import time
+timesleep={1:1,2:0.1,3:0.01,4:0.0001,5:0.00001}
 def partition(arr,low,high,create_lines,time_interval): 
     i = ( low-1 )        
     pivot = arr[high]     
     create_lines(arr,getcolor(len(arr),low,high,i,i))
-    time.sleep(time_interval)
+    time.sleep(timesleep[time_interval])
     for j in range(low , high): 
         if   arr[j] <= pivot: 
             create_lines(arr,getcolor(len(arr),low,high,i,j,True))
-            time.sleep(time_interval)
+            time.sleep(timesleep[time_interval])
             i = i+1 
             arr[i],arr[j] = arr[j],arr[i] 
         create_lines(arr,getcolor(len(arr),low,high,i,high,True))
-        time.sleep(time_interval)
+        time.sleep(timesleep[time_interval])
 
     create_lines(arr,getcolor(len(arr),low,high,i,j,True))
-    time.sleep(time_interval)
+    time.sleep(timesleep[time_interval])
     arr[i+1],arr[high] = arr[high],arr[i+1] 
     return ( i+1 ) 
 

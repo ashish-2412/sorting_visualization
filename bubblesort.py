@@ -1,5 +1,5 @@
 import time
-timesleep={1:1.5,2:1.2,3:1,4:0.6,5:0.0001}
+timesleep={1:1,2:0.6,3:0.1,4:0.001,5:0.0001}
 def bubblesort(data,draw_lines,time_interval,color):
     print(time_interval)
     for i in range(len(data)):

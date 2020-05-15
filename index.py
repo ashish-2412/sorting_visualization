@@ -34,8 +34,8 @@ def draw_lines(data,color):
     c_height=380
     c_width=600
     x_width=c_width/(len(data)+1)
-    offset=30
-    spacing=10
+    offset=0
+    spacing=5
     
     for i,height in enumerate(normalized_data):
         #topleft
@@ -45,7 +45,7 @@ def draw_lines(data,color):
         x1=(i+1)*x_width+offset
         y1=c_height
         canvas.create_rectangle(x0,y0,x1,y1,fill=color[i])
-        canvas.create_text(x0+2,y0,anchor=SW,text=str(data[i]))
+        
     root.update_idletasks()
 def startsort():
     global data
@@ -59,15 +59,15 @@ def startsort():
 
 root=Tk()
 root.title("Sorting Visualization")
-root.minsize(900,800)
+root.minsize(650,550)
 root.config(bg='white')
-menu=Frame(root,width="600",height="400",bg='slate grey')
-menu.grid(row=0,column=0,padx=10,pady=5)
+menu=Frame(root,width="900",height="800",bg='slate grey')
+menu.grid(row=0,column=0,padx=0,pady=0)
 canvas=Canvas(root,width=600,height=380)
 canvas.grid(row=1,column=0,padx=20,pady=5)
 
 b1=Button(menu,text="Generate random values",command=generate,bg="indian red")
-b1.grid(row=2,column=4,padx=0,pady=5)
+b1.grid(row=2,column=3,padx=0,pady=5)
 
 l1=Label(menu,text="Sorting Algorithm",bg='azure')
 l1.grid(row=0,column=0,padx=5,pady=5,sticky=W)
@@ -81,20 +81,19 @@ speed_scale.grid(row=2,column=0,padx=5,pady=5)
 start=Button(menu,text="Start!",command=startsort,bg="sea green")
 start.grid(row=2,column=2,padx=(0,50),pady=5)
 
-l3=Label(menu,text="Size",bg='azure')
-l3.grid(row=1,column=0,padx=5,pady=5,sticky=W)
-asize=Entry(menu,width=10)
-asize.grid(row=1,column=1,padx=5,pady=5,sticky=W)
+
+asize=Scale(menu,from_=10,to=140,length=150,digits=3,resolution=10,orient=HORIZONTAL,label="Select size")
+asize.grid(row=1,column=0,padx=5,pady=5,sticky=W)
 
 l3=Label(menu,text="Minimum value",bg='azure')
-l3.grid(row=1,column=2,padx=5,pady=5,sticky=W)
+l3.grid(row=1,column=1,padx=5,pady=5,sticky=W)
 minval=Entry(menu,width=10)
-minval.grid(row=1,column=3,padx=5,pady=5,sticky=W)
+minval.grid(row=1,column=2,padx=5,pady=5,sticky=W)
 
 l4=Label(menu,text="Maximum value",bg='azure')
-l4.grid(row=1,column=4,padx=5,pady=5,sticky=W)
+l4.grid(row=1,column=3,padx=5,pady=5,sticky=W)
 maxval=Entry(menu,width=10)
-maxval.grid(row=1,column=5,padx=5,pady=5,sticky=W)
+maxval.grid(row=1,column=4,padx=5,pady=5,sticky=W)
 
 
 root.mainloop()
